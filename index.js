@@ -13,7 +13,12 @@ app.use(
     allowedHeaders: "Content-Type,x-token",
   })
 );
-app.use(express.json());
+
+// Configure the limit for JSON request bodies
+app.use(express.json({ limit: "50mb" }));
+
+// Increase the limit for URL-encoded request bodies (if you use them)
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 app.use("/api", file);
 app.use("/public", express.static(path.join(__dirname, "public")));
