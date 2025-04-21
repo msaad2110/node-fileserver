@@ -9,7 +9,7 @@ const cors = require("cors");
 const allowedOrigins = [
   "http://localhost:3000",
   "https://nucleus.sale",
-  "http://localhost:3000",
+  "http://localhost:3004",
   "https://backend.paylinkly.com",
 ];
 
