@@ -6,7 +6,12 @@ const PORT = process.env.PORT;
 const app = express();
 const cors = require("cors");
 
-const allowedOrigins = ["http://localhost:3000", "https://nucleus.sale"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://nucleus.sale",
+  "http://localhost:3000",
+  "https://backend.paylinkly.com",
+];
 
 app.use(
   cors({
