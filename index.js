@@ -11,6 +11,8 @@ const allowedOrigins = [
   "https://nucleus.sale",
   "http://localhost:3004",
   "https://backend.paylinkly.com",
+  "https://front.invader.shop",
+  "http://localhost:9002",
 ];
 
 app.use(
