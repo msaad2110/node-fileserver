@@ -7,7 +7,11 @@ const app = express();
 const cors = require("cors");
 
 const allowedOrigins = [
-  "https://fbfhsg782.invader.shop",
+  "http://localhost:3000",
+  "https://nucleus.sale",
+  "http://localhost:3004",
+  "https://backend.paylinkly.com",
+  "https://front.invader.shop",
   "http://localhost:13002",
 ];
 
