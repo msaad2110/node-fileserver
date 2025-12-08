@@ -2,17 +2,13 @@ const express = require("express");
 const file = require("./routes/files");
 const dotenv = require("dotenv").config();
 const path = require("path");
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 13012;
 const app = express();
 const cors = require("cors");
 
 const allowedOrigins = [
-  "http://localhost:3000",
-  "https://nucleus.sale",
-  "http://localhost:3004",
-  "https://backend.paylinkly.com",
-  "https://front.invader.shop",
-  "http://localhost:9002",
+  "https://fbfhsg782.invader.shop",
+  "http://localhost:13002",
 ];
 
 app.use(
