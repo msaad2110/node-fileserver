@@ -13,13 +13,17 @@ const errorLogger = require("./middleware/errorLogger");
 const allowedOrigins = [
   "https://fbfhsg782.invader.shop",
   "http://localhost:13002",
+  "http://localhost:13012",
+  "https://app.invader.shop/api/upload",
 ];
 
 app.use(
   cors({
     origin: allowedOrigins,
     methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,x-token",
+    allowedHeaders:
+      "Content-Type,x-token,x-change-password-token,x-otp-token,x-user-token, x-finger-print",
+    credentials: true,
   })
 );
 
@@ -40,7 +44,6 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(errorLogger);
 
 // Server memory monitoring
-
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (reason, promise) => {
