@@ -18,7 +18,11 @@ const allowedOrigins = [
   "https://front.invader.shop",
   "http://localhost:13002",
   "http://localhost:13012",
-  "https://app.invader.shop/api/upload",
+  "http://localhost:10001",
+  "https://staging.invader.shop",
+  "https://back.invader.shop/api/upload",
+  "https://xback.tfgsolutions.pk",
+  "https://xback.tfgsolutions.pk/api/upload",
 ];
 
 app.use(
