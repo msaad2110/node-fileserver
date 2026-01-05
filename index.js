@@ -39,9 +39,7 @@ app.use(securityLogger);
 
 app.use("/api", file);
 app.use("/public", express.static(path.join(__dirname, "public")));
-app.use("/testing-purposes", (req, res) => {
-  res.send("Testing purposes only");
-});
+
 // Error logging middleware (must be after routes)
 app.use(errorLogger);
 
