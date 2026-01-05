@@ -1,0 +1,40 @@
+name: Deploy Files Service
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            # Navigate to project folder
+            mkdir -p /var/www/projects/node-fileserver
+            cd /var/www/projects/node-fileserver
+            
+            # Pull code (assuming git is initialized)
+            if [ -d .git ]; then
+              git pull origin main
+            else
+              git clone https://github.com/${{ github.repository }}.git .
+            fi
+
+            # Load NVM and Node
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm use 20.19.6
+
+            # Install and Restart
+            npm install
+            pm2 restart node-fileserver --update-env || pm2 start index.js --name node-fileserver -- --port 13012
+            pm2 save
