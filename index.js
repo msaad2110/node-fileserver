@@ -45,6 +45,9 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(requestLogger);
 app.use(securityLogger);
 
+app.use("/testing-purposes", (req, res) => {
+  res.send("Testing purposes only");
+});
 app.use("/api", file);
 app.use("/public", express.static(path.join(__dirname, "public")));
 
